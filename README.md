@@ -23,11 +23,6 @@ streamlit run fin_bot.py
 - Stores conversation sessions and allows users to review past conversations.
 - Allows users to start a new chat session and clear all stored conversation sessions.
 
-## Screenshots
-
-![Screenshot 1](screenshot1.png)
-![Screenshot 2](screenshot2.png)
-
 ## Configuration
 
 The application allows some configuration options through the sidebar:
