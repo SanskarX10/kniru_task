@@ -5,7 +5,7 @@ from langchain.chains.conversation.memory import ConversationEntityMemory
 from langchain.chains.conversation.prompt import ENTITY_MEMORY_CONVERSATION_TEMPLATE
 from langchain.llms import OpenAI
 
-# st.set_page_config(page_title='FinBot', layout='wide')
+st.set_page_config(page_title='FinBot', layout='wide')
 
 if "generated" not in st.session_state:
      st.session_state["generated"] = []
@@ -86,12 +86,10 @@ else:
 
         - 2. Ask anything via the text input widget
 
-        Your API-key is not stored in any form by this app. However, for transparency ensure to delete your API once used.
+        Your API-key is not stored in any form by this app.
         ```
-        
         ''')
     st.sidebar.warning('API key required to try this app.The API key is not stored in any form.')
-    # st.sidebar.info("Your API-key is not stored in any form by this app. However, for transparency ensure to delete your API once u
 
 st.sidebar.button("New Chat", on_click = new_chat, type='primary')
 
@@ -102,27 +100,19 @@ if user_input:
     st.session_state.past.append(user_input)
     st.session_state.generated.append(output)
 
-# # Allow to download as well
-# download_str = []
+
 # Display the conversation history using an expander, and allow the user to download it
 with st.expander("Conversation", expanded=True):
     for i in range(len(st.session_state['generated'])-1, -1, -1):
         st.info(st.session_state["past"][i],icon="🧐")
         st.success(st.session_state["generated"][i], icon="🤖")
-#         download_str.append(st.session_state["past"][i])
-#         download_str.append(st.session_state["generated"][i])
-    
-#     # Can throw error - requires fix
-#     download_str = '\n'.join(download_str)
-#     if download_str:
-#         st.download_button('Download',download_str)
 
-# # Display stored conversation sessions in the sidebar
-# for i, sublist in enumerate(st.session_state.stored_session):
-#         with st.sidebar.expander(label= f"Conversation-Session:{i}"):
-#             st.write(sublist)
+# Display stored conversation sessions in the sidebar
+for i, sublist in enumerate(st.session_state.stored_session):
+        with st.sidebar.expander(label= f"Conversation-Session:{i}"):
+            st.write(sublist)
 
-# # Allow the user to clear all stored conversation sessions
-# if st.session_state.stored_session:   
-#     if st.sidebar.checkbox("Clear-all"):
-#         del st.session_state.stored_session
+# Allow the user to clear all stored conversation sessions
+if st.session_state.stored_session:   
+    if st.sidebar.checkbox("Clear-all"):
+        del st.session_state.stored_session
