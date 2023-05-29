@@ -10,7 +10,7 @@ FinBot is a personal finance manager built using LangChain, OpenAI, and Streamli
 1. Clone the repository and navigate to the project directory.
 2. Install the required dependencies by running the following command: pip install -r requirements.txt
 
-3. Obtain an OpenAI API key and provide it when prompted by the application.
+3. Obtain your own OpenAI API key and provide it when prompted by the application.
 4. Start the application by running the following command:
 streamlit run fin_bot.py
 
@@ -31,6 +31,13 @@ The application allows some configuration options through the sidebar:
 - Preview memory buffer: Check this option to view the memory buffer.
 - Model: Select the language model to use (currently only supports "gpt-3.5-turbo").
 - Summary of prompts to consider: Specify the number of prompts to consider for entity memory.
+
+
+## Detailed Solution : 
+- The data stored in JSON can be parsed at it is in a tree structure and with the help of langchan LLM loaders
+- The data of the users can be used to train and fine tune our LLM for more personal responses and a better curated reply by the the model
+- Training/Fine tuning can be done in chunks as we hit a certain limit of collected data beacuse retraining for small amount is highly expensive
+- Data storage can be done in NOSQL / JSON supporting databases for faster data feeding to thr pipeline
 
 ## Dependencies
 
